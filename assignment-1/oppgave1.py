@@ -215,6 +215,7 @@ def oppgave1_1():
 
     #Lineartransformerer bilde med ønsket standardavvik og middelverdi
     f_limited, f_not_limited = linear_graytransform(f,std_T = 67, imean_T = 127)
+    imwrite('portrett_standardisert.png',f_limited.astype(np.uint8))
 
     #Ønsker å sjekke av vi faktisk oppnådde ønsket standardavvik og middelverdi
     #For å gjøre det regner jeg ut for originalbildet og for det behandlede bildet (uten grenser)
@@ -234,8 +235,6 @@ def oppgave1_1():
         med grenser: standardavvik={round(std_transform_limit,2)} og middelverdi={round(mean_transform_limit,2)}')
 
     plt.show()
-
-    imwrite('portrett_standardisert.png',f_limited.astype(np.uint8))
 
 def oppgave1_2():
     mask = imread('geometrimaske.png',as_gray=True)
