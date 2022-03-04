@@ -226,11 +226,11 @@ def oppgave1_1():
 
 
     #Visualisering
-    plt.imshow(f,cmap='gray',aspect='auto')
+    plt.imshow(f,cmap='gray',vmin=0,vmax=255,aspect='auto')
     plt.title(f'Originalbilde\nstandardavvik={round(std_original,2)} og middelverdi={round(mean_original,2)}')
 
     plt.figure()
-    plt.imshow(f_limited,cmap='gray',aspect='auto')
+    plt.imshow(f_limited,cmap='gray',vmin=0,vmax=255,aspect='auto')
     plt.title(f'Standardisert\nuten grenser: standardavvik={round(std_transform,2)} og middelverdi={round(mean_transform,2)}\n\
         med grenser: standardavvik={round(std_transform_limit,2)} og middelverdi={round(mean_transform_limit,2)}')
 
@@ -264,26 +264,26 @@ def oppgave1_2():
     img_nearest_neighbor = nearest_neighbor(img,mask,img_coord,mask_coord)
     img_bilinear_interpolation = bilinear_interpolation(img,mask,img_coord,mask_coord)
 
-    imwrite('portrett_forlengsmapping.png',img_forward.astype(np.uint8))
-    imwrite('portrett_nærmeste-nabo.png',img_nearest_neighbor.astype(np.uint8))
-    imwrite('portrett_bilinær-interpolasjon.png',img_bilinear_interpolation.astype(np.uint8))
+    imwrite('forlengsmapping.png',img_forward.astype(np.uint8))
+    imwrite('nærmeste-nabo.png',img_nearest_neighbor.astype(np.uint8))
+    imwrite('bilinær-interpolasjon.png',img_bilinear_interpolation.astype(np.uint8))
 
     #Visualisering
-    plt.imshow(img,cmap='gray',aspect='auto')
+    plt.imshow(img,cmap='gray',vmin=0,vmax=255,aspect='auto')
     plt.title('Original bilde')
 
     plt.figure()
-    plt.imshow(img_forward, cmap='gray',aspect='auto')
+    plt.imshow(img_forward, cmap='gray',vmin=0,vmax=255,aspect='auto')
     #plt.imshow(mask, cmap='gray', alpha=.1,aspect='auto')
     plt.title('Forlengs-mapping')
 
     plt.figure()
-    plt.imshow(img_nearest_neighbor, cmap='gray',aspect='auto')
+    plt.imshow(img_nearest_neighbor, cmap='gray',vmin=0,vmax=255,aspect='auto')
     #plt.imshow(mask, cmap='gray', alpha=.4,aspect='auto')
     plt.title('Nærmeste nabo')
 
     plt.figure()
-    plt.imshow(img_bilinear_interpolation, cmap='gray',aspect='auto')
+    plt.imshow(img_bilinear_interpolation, cmap='gray',vmin=0,vmax=255,aspect='auto')
     #plt.imshow(mask, cmap='gray', alpha=.4,aspect='auto')
     plt.title('Bilineær interpolasjon')
     plt.show()
