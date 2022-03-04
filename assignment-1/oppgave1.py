@@ -266,8 +266,8 @@ def oppgave1_2():
     img_bilinear_interpolation = bilinear_interpolation(img,mask,img_coord,mask_coord)
 
     imwrite('portrett_forlengsmapping.png',img_forward.astype(np.uint8))
-    imwrite('portrett_nærmeste-nabo.png',img_forward.astype(np.uint8))
-    imwrite('portrett_bilinær-interpolasjon.png',img_forward.astype(np.uint8))
+    imwrite('portrett_nærmeste-nabo.png',img_nearest_neighbor.astype(np.uint8))
+    imwrite('portrett_bilinær-interpolasjon.png',img_bilinear_interpolation.astype(np.uint8))
 
     #Visualisering
     plt.imshow(img,cmap='gray',aspect='auto')
