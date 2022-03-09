@@ -4,9 +4,11 @@ from imageio import imread, imwrite
 import math
 
 def find_std_mean(f):
-    # middelverdi = summen av alle pikselverdier / antall piksler
-    # varians = summen av (hver pikselverdier - middelverdi)^2/ antall piksler 
-    # standardavvik = kvadratroten av varians
+    '''
+    middelverdi = summen av alle pikselverdier / antall piksler
+    varians = summen av (hver pikselverdier - middelverdi)^2/ antall piksler 
+    standardavvik = kvadratroten av varians
+    '''
 
     n,m = f.shape
     
@@ -30,12 +32,14 @@ def find_std_mean(f):
     return std, imean
 
 def linear_graytransform(f,std_T,imean_T):
-    #Anta en lineær gråtone-transform T[i] = ai + b
-    # a = (ønsket standardavvik) / (faktisk standardavvik)
-    # b = (ønsket middelverdi) - a * (faktisk middelverdi)
-    #NB: bildet skal kunne representeres med 8 bit, dvs 0-255 ulike gråtoner.
-    #    alt over 255 og under 0 må derfor klippes.
+    '''
+    Anta en lineær gråtone-transform T[i] = ai + b
+     a = (ønsket standardavvik) / (faktisk standardavvik)
+     b = (ønsket middelverdi) - a * (faktisk middelverdi)
     
+    NB: bildet skal kunne representeres med 8 bit, dvs 0-255 ulike gråtoner.
+        alt over 255 og under 0 må derfor klippes.
+    '''
     #Grenser for klipping
     maxT = 255
     minT = 0
@@ -123,6 +127,7 @@ def affine_transform(x,y, constants, inverse = False):
         #Perform matrix multiplication: A * b = (x,y)
         x_m,y_m,_ = np.dot(A,b)
 
+
     return x_m,y_m
 
 def forward_mapping(img,mask,from_coord,to_coord):
@@ -205,12 +210,13 @@ def bilinear_interpolation(img,mask,from_coord,to_coord):
 
 
 def oppgave1_1():
-    #Oppgave 1.1: Preprosessering av protrett
-    # Standardisere kontrasten. Det prosesserte bilde skal ha en middelverdi(imean_T) lik 127
-    # og et standardavvik (std_T) lik 67. Bilde skal kunne lagres med 8bit, det betyr at
-    # bilde skal ha pikselintensiteter mellom 0 og 255.
-    # Ønsker å gjøre dette ved å bruke en linear endring
-
+    '''
+    Oppgave 1.1: Preprosessering av protrett
+     Standardisere kontrasten. Det prosesserte bilde skal ha en middelverdi(imean_T) lik 127
+     og et standardavvik (std_T) lik 67. Bilde skal kunne lagres med 8bit, det betyr at
+     bilde skal ha pikselintensiteter mellom 0 og 255.
+     Ønsker å gjøre dette ved å bruke en linear endring
+    '''
     f = imread('portrett.png',as_gray=True)
 
     #Lineartransformerer bilde med ønsket standardavvik og middelverdi
