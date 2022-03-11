@@ -17,66 +17,95 @@ import matplotlib.pyplot as plt
 import numpy as np
 from imageio import imread
 
-def padding_nearest_neighbor(img, zeros = False):
-    img = np.pad(img,pad_width=1)
+def padding(img,kernel_size, zeros = False):
+    k = (kernel_size-1)//2
+    padded = np.pad(img,k)
 
+    #Dersom vi ønsker at bilderanden skal ha pikselverdi lik 0
     if zeros:
-        return img
+        return padded
 
-    rows, col = img.shape
- 
-    #Hjørnene settes
-    img[0,0] = img[1,1]
-    img[0,-1] = img[1,-2]
-    img[-1,0] = img[-2,1]
-    img[-1,-1] = img[-2,-2]
+    rows, col = padded.shape
+    #Hjørnene paddes til nærmeste nabo's pikselverdi
+    padded[0:k,0:k] = padded[k,k] #Øverst venstre
+    padded[rows-k:,0:k] = padded[rows-k-1,k]#Nederst venstre
+    padded[0:k,col-k:] = padded[k,col-k-1]#Øverst høyre
+    padded[rows-k:,col-k:] = padded[rows-k-1,col-k-1]#Nederst høyre
+  
+    #Øvre og nedre rad paddes til nærmeste nabo's pikselverdi
+    for i in range(k,rows+k):
+        padded[0:k,i] = padded[k,i] #Øverste rad
+        padded[rows-k:,i] = padded[rows-k-1,i] #Nederste rad
 
-    #Øvre og nedre rad settes
-    for i in range(1,col-1):
-        img[0,i] = img[1,i] #Øverste rad
-        img[-1,i] = img[-2,i] #Nederste rad
+    # #Venstre og høyre kolonner paddes til nærmeste nabo's pikselverdi
+    for i in range(k,rows-k):
+        padded[i,0:k] = padded[i,k] #Venstre kolonne
+        padded[i,col-k:] = padded[i,col-k-1]#Høyre kolonne
 
-    #Venstre og høyre kolonner settes
-    for i in range(1,rows-1):
-        img[i,0] = img[i,1]
-        img[i,-1] = img[i,-2]
+    return padded
 
-    return img
-
-def conv3x3(img,kernel,zeros=False):
+def convolution(img,kernel,zeros=False):
     rows, col = img.shape
     img_conv = np.zeros((rows,col))
+    kernel_size = kernel.shape[0]
     kernel = np.rot90(kernel,2)
 
-    img = padding_nearest_neighbor(img,zeros)
+    #For å oppnå "same convolution", at inn og utbilde har samme størrelse, må legge til padding på innbilde
+    img = padding(img,kernel_size,zeros)
     for r in range(rows):
         for c in range(col):
-            overlay = img[r:3+r,c:3+c] #Finner 3x3 overlay fra originalbildet, der senterpixelen er første piksel i bildet.
-            conv_val = np.sum(np.multiply(kernel,overlay)) #Multipliserer elementvis og summerer
-            img_conv[r,c] = conv_val
+            overlay = img[r:kernel_size+r, c:kernel_size+c]
+            img_conv[r,c] = np.sum(kernel * overlay) #for np.arrays er '*'-operatoren det samme som elementvis matrisemultiplikasjon
     
     return img_conv
 
-def subplot_result(img1, img2):
+def subplot_result(img1, img2,kernel_type):
     fig, ax = plt.subplots(1,2)
     ax[0].imshow(img1,cmap='gray',vmin=0,vmax=255,aspect='auto')
     ax[0].set_title('Original')
     ax[1].imshow(img2,cmap='gray',vmin=0,vmax=255,aspect='auto')
-    ax[1].set_title('Convoluted')
+    ax[1].set_title('Convoluted using '+kernel_type)
     fig.tight_layout()
     plt.show( )
 
+def gaussian_kernel(sigma):
+    kernel_size = 1 + round(sigma*8)
+    h = np.ones((kernel_size, kernel_size))
+    m = kernel_size//2
+
+    for x in range(kernel_size):
+        for y in range(kernel_size):
+            #Usikker på hvordan vi skal finne A
+            A = 1/(2*np.pi*sigma**2)
+            exp = np.exp(-((x-m)**2 + (y-m)**2)/(2*sigma**2))
+            h[x,y] = A*exp
+    return h
+
+def average_kernel(n):
+    return np.ones((n,n)) * 1/(n**2)
+
+
 def oppgave2_1():
-    img = imread('portrett_standardisert.png',as_gray=True)
-    middelverdi = np.ones((3,3)) * 1/9
-    img_conv = conv3x3(img,middelverdi)
-    subplot_result(img, img_conv)
+    img = imread('cellekjerner.png',as_gray=True)
+    
+    average = average_kernel(7)
+    
+    img_conv = convolution(img,average)
+    
+    subplot_result(img, img_conv,"average 25x25 kernel")
 
 def oppgave2_2():
-    pass
+    img = imread('cellekjerner.png',as_gray=True)
+
+    sigma = 2
+    gaussian = gaussian_kernel(sigma)
+    img_conv = convolution(img, gaussian)
+    subplot_result(img, img_conv,f"gaussian with sigma {sigma}")
 
 def main():
-    oppgave2_1()
+    np.set_printoptions(threshold=np.inf)
+    
+    oppgave2_2()
 
 main()
 
