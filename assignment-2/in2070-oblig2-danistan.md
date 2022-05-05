@@ -6,6 +6,7 @@
   - [Oppgave 1.1 og 1.2](#oppgave-11-og-12)
   - [Oppgave 1.2](#oppgave-12)
 - [Oppgave 2 - Ikke-tapsfri JPEG-kompresjon](#oppgave-2---ikke-tapsfri-jpeg-kompresjon)
+  - [Generelt om JPEG-kompresjon](#generelt-om-jpeg-kompresjon)
   - [Resultatbilder](#resultatbilder)
     - [Rekonstruert uten kvantifisering](#rekonstruert-uten-kvantifisering)
     - [Rekonstruert med kvantifiseringsfaktor q = 0.1](#rekonstruert-med-kvantifiseringsfaktor-q--01)
@@ -13,7 +14,6 @@
     - [Rekonstruert med kvantifiseringsfaktor q = 2](#rekonstruert-med-kvantifiseringsfaktor-q--2)
     - [Rekonstruert med kvantifiseringsfaktor q = 8](#rekonstruert-med-kvantifiseringsfaktor-q--8)
     - [Rekonstruert med kvantifiseringsfaktor q = 32](#rekonstruert-med-kvantifiseringsfaktor-q--32)
-  - [Generelt om JPEG-kompresjon](#generelt-om-jpeg-kompresjon)
   - [a) Rekonstruksjonsfeil](#a-rekonstruksjonsfeil)
   - [b) Fremvisning av bilde](#b-fremvisning-av-bilde)
   - [Kompresjonsfaktor q og kompresjonsraten](#kompresjonsfaktor-q-og-kompresjonsraten)
@@ -43,6 +43,17 @@ Resultatbilde fra frekvensdomenet med 15x15 middelverdifilter\
 ## Oppgave 1.2
 
 # Oppgave 2 - Ikke-tapsfri JPEG-kompresjon
+
+## Generelt om JPEG-kompresjon
+Kompresjonsmetoden brukt i denne oppgaven er som tittelen sier ikke-tapsfri eller "lossy" kompresjon. Det er mulig å oppnå en kompresjonsrate på 30, med akseptabel reduksjon i bildekvalitet. JPEG deler innbilde opp i flere 8x8 blokker, der hver blokk transformeres med en diskret cosinus transform (DCT). Hensikten med å dele opp bilde og utføre DCT på hver blokk er å samle informasjonen til de 64 pikslene i en liten del av de 64 DCT-koeffsientene. Vi vil oppleve at flere av de 64 DCT-koeffisientene vil være tilnærmet 0, noe som gjør at vi kan komprimere bilde med koding, ofte huffmann. 
+
+Etter 2D DCT-transformasjonen vil de høyeste verdiene finnes i øverste venstre hjørne av DCT-koeffsienetene. Verdien av koeffisientene sier noe om hvor mye hver koeffisient er tilstede i originalbilde. Vi sier pikselverdiene er transformert.
+
+Neste steg er å dividere DCT-koeffisientene med vekt-matrise, dette gir opphav til en "lossy" kompresjon fordi vi runder til nærmeste heltll. I JPEG kompresjon er det ofte brukt en standard vekt-matrise (som også brukes i denne oppgaven). Ved å dividere på med vektmatrisen og runde til nærmeste heltall vil vi få en resultatmatrise med høye verdier i øverste venstre høyrne og resten er oftes 0. Vi sier pikselverdiene er kvantifisert.
+
+Steget etter dette er å utføre en sikk-sakk-skanning, der de største verdiene kommer først i rekka og blir etterfulgt av flere 0'ere. En slik rekke egner seg ypperlig til å utføre løpelengdetransformasjon av de transformerte og kvantifiserte verdiene. Etterpå blir disse løpelengende kodet ved hjelp av huffman-koding. Huffman-koden og kodeboken sendes deretter til mottaker, i en komprimert tilstand. Dette ble ikke gjort i denne obligen. 
+
+Ved å bruke kodeboken kan mottaker dekode kodeordene og reversere løpelengdetransformene. Dette vil gi mottaker samme tallrekke som ble laget i sikk-sakk-skanningen. Deretter kan mottaker mulitiplisere med samme vektmatrise (kvantifiseringen) og ender opp med samme resultat.
 
 ## Resultatbilder
 Resultatbilder og estimert kompresjonsdata med kompresjonsfaktor, q = [0.1, 0.5, 2, 8, 32].
@@ -116,17 +127,6 @@ H = 0.18b storage = 3.0kB
 CR = 44.528 
 PR = 97.754%
 ```
-
-## Generelt om JPEG-kompresjon
-Kompresjonsmetoden brukt i denne oppgaven er som tittelen sier ikke-tapsfri eller "lossy" kompresjon. Det er mulig å oppnå en kompresjonsrate på 30, med akseptabel reduksjon i bildekvalitet. JPEG deler innbilde opp i flere 8x8 blokker, der hver blokk transformeres med en diskret cosinus transform (DCT). Hensikten med å dele opp bilde og utføre DCT på hver blokk er å samle informasjonen til de 64 pikslene i en liten del av de 64 DCT-koeffsientene. Vi vil oppleve at flere av de 64 DCT-koeffisientene vil være tilnærmet 0, noe som gjør at vi kan komprimere bilde med koding, ofte huffmann. 
-
-Etter 2D DCT-transformasjonen vil de høyeste verdiene finnes i øverste venstre hjørne av DCT-koeffsienetene. Verdien av koeffisientene sier noe om hvor mye hver koeffisient er tilstede i originalbilde. Vi sier pikselverdiene er transformert.
-
-Neste steg er å dividere DCT-koeffisientene med vekt-matrise, dette gir opphav til en "lossy" kompresjon fordi vi runder til nærmeste heltll. I JPEG kompresjon er det ofte brukt en standard vekt-matrise (som også brukes i denne oppgaven). Ved å dividere på med vektmatrisen og runde til nærmeste heltall vil vi få en resultatmatrise med høye verdier i øverste venstre høyrne og resten er oftes 0. Vi sier pikselverdiene er kvantifisert.
-
-Steget etter dette er å utføre en sikk-sakk-skanning, der de største verdiene kommer først i rekka og blir etterfulgt av flere 0'ere. En slik rekke egner seg ypperlig til å utføre løpelengdetransformasjon av de transformerte og kvantifiserte verdiene. Etterpå blir disse løpelengende kodet ved hjelp av huffman-koding. Huffman-koden og kodeboken sendes deretter til mottaker, i en komprimert tilstand. Dette ble ikke gjort i denne obligen. 
-
-Ved å bruke kodeboken kan mottaker dekode kodeordene og reversere løpelengdetransformene. Dette vil gi mottaker samme tallrekke som ble laget i sikk-sakk-skanningen. Deretter kan mottaker mulitiplisere med samme vektmatrise (kvantifiseringen) og ender opp med samme resultat.
 
 ## a) Rekonstruksjonsfeil
 
