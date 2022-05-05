@@ -7,13 +7,12 @@
   - [Oppgave 1.2](#oppgave-12)
 - [Oppgave 2 - Ikke-tapsfri JPEG-kompresjon](#oppgave-2---ikke-tapsfri-jpeg-kompresjon)
   - [Resultatbilder](#resultatbilder)
-    - [Originalbilde](#originalbilde)
-    - [Rekonstruert uten kvantifisering\](#rekonstruert-uten-kvantifisering)
-    - [Rekonstruert med kvantifiseringsfaktor q = 0.1\](#rekonstruert-med-kvantifiseringsfaktor-q--01)
-    - [Rekonstruert med kvantifiseringsfaktor q = 0.5\](#rekonstruert-med-kvantifiseringsfaktor-q--05)
-    - [Rekonstruert med kvantifiseringsfaktor q = 2\](#rekonstruert-med-kvantifiseringsfaktor-q--2)
-    - [Rekonstruert med kvantifiseringsfaktor q = 8\](#rekonstruert-med-kvantifiseringsfaktor-q--8)
-    - [Rekonstruert med kvantifiseringsfaktor q = 32\](#rekonstruert-med-kvantifiseringsfaktor-q--32)
+    - [Rekonstruert uten kvantifisering](#rekonstruert-uten-kvantifisering)
+    - [Rekonstruert med kvantifiseringsfaktor q = 0.1](#rekonstruert-med-kvantifiseringsfaktor-q--01)
+    - [Rekonstruert med kvantifiseringsfaktor q = 0.5](#rekonstruert-med-kvantifiseringsfaktor-q--05)
+    - [Rekonstruert med kvantifiseringsfaktor q = 2](#rekonstruert-med-kvantifiseringsfaktor-q--2)
+    - [Rekonstruert med kvantifiseringsfaktor q = 8](#rekonstruert-med-kvantifiseringsfaktor-q--8)
+    - [Rekonstruert med kvantifiseringsfaktor q = 32](#rekonstruert-med-kvantifiseringsfaktor-q--32)
   - [Generelt om JPEG-kompresjon](#generelt-om-jpeg-kompresjon)
   - [a) Rekonstruksjonsfeil](#a-rekonstruksjonsfeil)
   - [b) Fremvisning av bilde](#b-fremvisning-av-bilde)
@@ -46,13 +45,12 @@ Resultatbilde fra frekvensdomenet med 15x15 middelverdifilter\
 # Oppgave 2 - Ikke-tapsfri JPEG-kompresjon
 
 ## Resultatbilder
-### Originalbilde
-<img src="./uio.png" width="700">
+Resultatbilder og estimert kompresjonsdata med kompresjonsfaktor, q = [0.1, 0.5, 2, 8, 32].
 
-### Rekonstruert uten kvantifisering\
+### Rekonstruert uten kvantifisering
 <img src="./results/uio_no_quantification.png" width="700">
 
-### Rekonstruert med kvantifiseringsfaktor q = 0.1\
+### Rekonstruert med kvantifiseringsfaktor q = 0.1
 <img src="./results/uio_reconstruction_q_0.1.png" width="700">
 
 Estimert kompresjonsinformasjon:
@@ -65,7 +63,7 @@ H = 3.879b storage = 60.0kB
 CR = 2.062 
 PR = 51.507% 
 ```
-### Rekonstruert med kvantifiseringsfaktor q = 0.5\
+### Rekonstruert med kvantifiseringsfaktor q = 0.5
 <img src="./results/uio_reconstruction_q_0.5.png" width="700">
 
 Estimert kompresjonsinformasjon:
@@ -79,7 +77,7 @@ CR = 3.797
 PR = 73.666%
 ```
 
-### Rekonstruert med kvantifiseringsfaktor q = 2\
+### Rekonstruert med kvantifiseringsfaktor q = 2
 <img src="./results/uio_reconstruction_q_2.png" width="700">
 
 Estimert kompresjonsinformasjon:
@@ -92,7 +90,7 @@ H = 1.088b storage = 17.0kB
 CR = 7.351 
 PR = 86.396% 
 ```
-### Rekonstruert med kvantifiseringsfaktor q = 8\
+### Rekonstruert med kvantifiseringsfaktor q = 8
 <img src="./results/uio_reconstruction_q_8.png" width="700">
 
 Estimert kompresjonsinformasjon:
@@ -106,7 +104,7 @@ CR = 16.335
 PR = 93.878% 
 ```
 
-### Rekonstruert med kvantifiseringsfaktor q = 32\
+### Rekonstruert med kvantifiseringsfaktor q = 32
 <img src="./results/uio_reconstruction_q_32.png" width="700">
 
 Estimert kompresjonsinformasjon:
