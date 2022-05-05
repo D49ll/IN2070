@@ -48,17 +48,64 @@ Rekonstruert uten kvantifisering\
 Rekonstruert med kvantifiseringsfaktor q = 0.1\
 <img src="./results/uio_reconstruction_q_0.1.png" width="700">
 
+Estimert kompresjonsinformasjon:
+```
+"uio.png" with q=0.1 
+Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.1: 
+Pixel intensities range from -711.0 to 663.0, which gives a range G = 1375.0 
+H = 3.879b storage = 60.0kB 
+CR = 2.062 
+PR = 51.507% 
+```
 Rekonstruert med kvantifiseringsfaktor q = 0.5\
 <img src="./results/uio_reconstruction_q_0.5.png" width="700">
+
+Estimert kompresjonsinformasjon:
+``` 
+"uio.png" with q=0.5 
+Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.5: 
+Pixel intensities range from -142.0 to 133.0, which gives a range G = 276.0 
+H = 2.107b storage = 32.0kB 
+CR = 3.797 
+PR = 73.666%
+```
 
 Rekonstruert med kvantifiseringsfaktor q = 2\
 <img src="./results/uio_reconstruction_q_2.png" width="700">
 
+Estimert kompresjonsinformasjon:
+```
+"uio.png" with q=2 
+Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=2: 
+Pixel intensities range from -36.0 to 33.0, which gives a range G = 70.0 
+H = 1.088b storage = 17.0kB 
+CR = 7.351 
+PR = 86.396% 
+```
 Rekonstruert med kvantifiseringsfaktor q = 8\
 <img src="./results/uio_reconstruction_q_8.png" width="700">
 
+Estimert kompresjonsinformasjon:
+```
+uio.png" with q=8 
+Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=8: 
+Pixel intensities range from -9.0 to 8.0, which gives a range G = 18.0 
+H = 0.49b storage = 8.0kB 
+CR = 16.335 
+PR = 93.878% 
+```
+
 Rekonstruert med kvantifiseringsfaktor q = 32\
 <img src="./results/uio_reconstruction_q_32.png" width="700">
+
+Estimert kompresjonsinformasjon:
+```
+uio.png" with q=32 Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=32: 
+Pixel intensities range from -2.0 to 2.0, which gives a range G = 5.0 
+H = 0.18b storage = 3.0kB 
+CR = 44.528 
+PR = 97.754%
+```
 
 ## Generelt om JPEG-kompresjon
 Kompresjonsmetoden brukt i denne oppgaven er som tittelen sier ikke-tapsfri eller "lossy" kompresjon. Det er mulig å oppnå en kompresjonsrate på 30, med akseptabel reduksjon i bildekvalitet. JPEG deler innbilde opp i flere 8x8 blokker, der hver blokk transformeres med en diskret cosinus transform (DCT). Hensikten med å dele opp bilde og utføre DCT på hver blokk er å samle informasjonen til de 64 pikslene i en liten del av de 64 DCT-koeffsientene. Vi vil oppleve at flere av de 64 DCT-koeffisientene vil være tilnærmet 0, noe som gjør at vi kan komprimere bilde med koding, ofte huffmann. 
