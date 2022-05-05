@@ -33,13 +33,13 @@ Bildene og tidskurvene lagres i mappen der `oppgave1.py` kjøres.
 ## Oppgave 1.1 og 1.2
 
 **Originalbildet**\
-<img src="./cow.png" width="700">
+<img src="./cow.png" width="400">
 
 **Romlig konvolusjon med 15x15 middelverdifilter**\
-<img src="./results/oppg1_1%20(15x15)%20cow.png" width="700">
+<img src="./results/oppg1_1%20(15x15)%20cow.png" width="400">
 
 **Frekvensdomenet med 15x15 middelverdifilter**\
-<img src="./results/oppg1_1%20(fft2)%20cow.png" width="700">
+<img src="./results/oppg1_1%20(fft2)%20cow.png" width="400">
 
 ## Oppgave 1.2
 
@@ -50,7 +50,7 @@ En sirkelkonvolusjon i bildedomene er ekvivalent med elementvis multiplikasjon i
 Fast-fourier-tranformen, som utnytter 2D DFT er separabelt, har en kjøretid O(N log N), mens romlig konvolusjonsfiltrering O(n²). Det betyr at for store filter vil en filtrering i frekvensdomene være raskere, fordi (n² >> log N).
 
 **Kjøretidskurver**\
-<img src="./results/Prosesseringstid.png" width="700">
+<img src="./results/Prosesseringstid.png" width="400">
 
 
 **Kommentar til kjøretid:**\
@@ -74,7 +74,7 @@ for i, n in zip(range(values.shape[0]), values):
     freq_time[i] = time.time()-start
 ```
 **Eksempel på kjøretider:**\
-<img src="./O_examples.jpeg" width="700">
+<img src="./O_examples.jpeg" width="400">
 
 
 # Oppgave 2 - Ikke-tapsfri JPEG-kompresjon
@@ -94,10 +94,10 @@ Ved å bruke kodeboken kan mottaker dekode kodeordene og reversere løpelengdetr
 Resultatbilder og estimert kompresjonsdata med kompresjonsfaktor, q = [0.1, 0.5, 2, 8, 32].
 
 ### Rekonstruert uten kvantifisering
-<img src="./results/uio_no_quantification.png" width="700">
+<img src="./results/uio_no_quantification.png" width="400">
 
 ### Rekonstruert med kvantifiseringsfaktor q = 0.1
-<img src="./results/uio_reconstruction_q_0.1.png" width="700">
+<img src="./results/uio_reconstruction_q_0.1.png" width="400">
 
 Estimert kompresjonsinformasjon:
 ```
@@ -110,7 +110,7 @@ CR = 2.062
 PR = 51.507% 
 ```
 ### Rekonstruert med kvantifiseringsfaktor q = 0.5
-<img src="./results/uio_reconstruction_q_0.5.png" width="700">
+<img src="./results/uio_reconstruction_q_0.5.png" width="400">
 
 Estimert kompresjonsinformasjon:
 ``` 
@@ -124,7 +124,7 @@ PR = 73.666%
 ```
 
 ### Rekonstruert med kvantifiseringsfaktor q = 2
-<img src="./results/uio_reconstruction_q_2.png" width="700">
+<img src="./results/uio_reconstruction_q_2.png" width="400">
 
 Estimert kompresjonsinformasjon:
 ```
@@ -137,7 +137,7 @@ CR = 7.351
 PR = 86.396% 
 ```
 ### Rekonstruert med kvantifiseringsfaktor q = 8
-<img src="./results/uio_reconstruction_q_8.png" width="700">
+<img src="./results/uio_reconstruction_q_8.png" width="400">
 
 Estimert kompresjonsinformasjon:
 ```
@@ -151,7 +151,7 @@ PR = 93.878%
 ```
 
 ### Rekonstruert med kvantifiseringsfaktor q = 32
-<img src="./results/uio_reconstruction_q_32.png" width="700">
+<img src="./results/uio_reconstruction_q_32.png" width="400">
 
 Estimert kompresjonsinformasjon:
 ```

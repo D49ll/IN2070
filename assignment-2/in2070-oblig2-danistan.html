@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>in2070-oblig2-danistan.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="obligatorisk-oppgave-2">Obligatorisk oppgave 2</h1>
+<ul>
+<li><a href="#obligatorisk-oppgave-2">Obligatorisk oppgave 2</a></li>
+<li><a href="#oppgave-1---implementasjon-av-konvolusjonsfilter-i-frekvensdomenet">Oppgave 1 - Implementasjon av konvolusjonsfilter i frekvensdomenet</a>
+<ul>
+<li><a href="#generelt">Generelt</a></li>
+<li><a href="#oppgave-11-og-12">Oppgave 1.1 og 1.2</a></li>
+<li><a href="#oppgave-12">Oppgave 1.2</a></li>
+<li><a href="#oppgave-13">Oppgave 1.3</a></li>
+</ul>
+</li>
+<li><a href="#oppgave-2---ikke-tapsfri-jpeg-kompresjon">Oppgave 2 - Ikke-tapsfri JPEG-kompresjon</a>
+<ul>
+<li><a href="#generelt-om-jpeg-kompresjon">Generelt om JPEG-kompresjon</a></li>
+<li><a href="#resultatbilder">Resultatbilder</a>
+<ul>
+<li><a href="#rekonstruert-uten-kvantifisering">Rekonstruert uten kvantifisering</a></li>
+<li><a href="#rekonstruert-med-kvantifiseringsfaktor-q--01">Rekonstruert med kvantifiseringsfaktor q = 0.1</a></li>
+<li><a href="#rekonstruert-med-kvantifiseringsfaktor-q--05">Rekonstruert med kvantifiseringsfaktor q = 0.5</a></li>
+<li><a href="#rekonstruert-med-kvantifiseringsfaktor-q--2">Rekonstruert med kvantifiseringsfaktor q = 2</a></li>
+<li><a href="#rekonstruert-med-kvantifiseringsfaktor-q--8">Rekonstruert med kvantifiseringsfaktor q = 8</a></li>
+<li><a href="#rekonstruert-med-kvantifiseringsfaktor-q--32">Rekonstruert med kvantifiseringsfaktor q = 32</a></li>
+</ul>
+</li>
+<li><a href="#a-rekonstruksjonsfeil">a) Rekonstruksjonsfeil</a></li>
+<li><a href="#b-fremvisning-av-bilde">b) Fremvisning av bilde</a></li>
+<li><a href="#c-kompresjonsfaktor-q-og-kompresjonsraten">c) Kompresjonsfaktor q og kompresjonsraten</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="oppgave-1---implementasjon-av-konvolusjonsfilter-i-frekvensdomenet">Oppgave 1 - Implementasjon av konvolusjonsfilter i frekvensdomenet</h1>
+<h2 id="generelt">Generelt</h2>
+<p>Koden ligger vedlagt delivry. For å kjøre programmet brukes følgende</p>
+<pre class="hljs"><code><div>$ python3 oppgave1.py
+</div></code></pre>
+<p>Bildene og tidskurvene lagres i mappen der <code>oppgave1.py</code> kjøres.</p>
+<h2 id="oppgave-11-og-12">Oppgave 1.1 og 1.2</h2>
+<p><strong>Originalbildet</strong><br>
+<img src="./cow.png" width="400"></p>
+<p><strong>Romlig konvolusjon med 15x15 middelverdifilter</strong><br>
+<img src="./results/oppg1_1%20(15x15)%20cow.png" width="400"></p>
+<p><strong>Frekvensdomenet med 15x15 middelverdifilter</strong><br>
+<img src="./results/oppg1_1%20(fft2)%20cow.png" width="400"></p>
+<h2 id="oppgave-12">Oppgave 1.2</h2>
+<p>En sirkelkonvolusjon i bildedomene er ekvivalent med elementvis multiplikasjon i frekvensdomene. Det er dette som gjør at vi kan designe filter i bildedomene for deretter og transformere det til frekvensdomene, og visa-versa. Det er viktig at innbilde og filteret er av samme dimensjon. Derfor blir ofte filteret null-utvidet. Men grunnet at det er en sirkelkonvolusjon må bildet også nullutvides for å håndtere randen. Når man bruker DFT antar man implisitt en periodisitet i innbildet, som kan gi en konsekvens av hvordan resultatbildet blir. En slik konsekvens kan være en translasjon av bilde, slik som var tilfellet i denne oppgaven. Man ser også at randen av bildene er ulike. I den romlige konvolusjonen er bildet nullutvidet, og derfor får man en &quot;svart&quot; kant som rammer bildet. Dersom man hadde nullutvidet bilde ville man kunne fjerne den translatoriske konsekvensen av den implisitte periodisiteten.</p>
+<h2 id="oppgave-13">Oppgave 1.3</h2>
+<p>Fast-fourier-tranformen, som utnytter 2D DFT er separabelt, har en kjøretid O(N log N), mens romlig konvolusjonsfiltrering O(n²). Det betyr at for store filter vil en filtrering i frekvensdomene være raskere, fordi (n² &gt;&gt; log N).</p>
+<p><strong>Kjøretidskurver</strong><br>
+<img src="./results/Prosesseringstid.png" width="400"></p>
+<p><strong>Kommentar til kjøretid:</strong><br>
+Fra grafen ser man den romlige konvolusjonen øker med jo større filteret blir, med formen til n². Dersom filteret er lite, dvs mindre enn 4x4, så vil romlig konvolusjon være raskere. For de andre filterverdiene er fast-fourier-transformen raskest.</p>
+<p>Tidskurven til fast-fourier-transformen var ikke som forventet. Jeg hadde trodd at den skulle øke mer før den stabiliserte seg. Mulig jeg gjort feil når jeg tok tiden, men gjorde likt på begge testene. Derfor kan resultatet mitt avvike fra virkeligheten, og det kan tenkes at romlig konvolusjon er raskere for litt større filter. Men det er helt sikkert at fast-fourier-transform er raskest for store filter, grunnet log n.</p>
+<p>Har lagt ved et utsnitt av koden under:</p>
+<pre class="hljs"><code><div>print(&quot;Starting timing process&quot;)
+for i, n in zip(range(values.shape[0]), values):
+    h = mean_value_kernel(n)
+    
+    start = time.time()
+    fh = signal.convolve2d(f,h,'same')
+    conv_time[i] = time.time()-start
+    
+    start = time.time()
+    FH = fast_fourier(f,h)
+    freq_time[i] = time.time()-start
+</div></code></pre>
+<p><strong>Eksempel på kjøretider:</strong><br>
+<img src="./O_examples.jpeg" width="400"></p>
+<h1 id="oppgave-2---ikke-tapsfri-jpeg-kompresjon">Oppgave 2 - Ikke-tapsfri JPEG-kompresjon</h1>
+<h2 id="generelt-om-jpeg-kompresjon">Generelt om JPEG-kompresjon</h2>
+<p>Kompresjonsmetoden brukt i denne oppgaven er som tittelen sier ikke-tapsfri eller &quot;lossy&quot; kompresjon. Det er mulig å oppnå en kompresjonsrate på 30, med akseptabel reduksjon i bildekvalitet. JPEG deler innbilde opp i flere 8x8 blokker, der hver blokk transformeres med en diskret cosinus transform (DCT). Hensikten med å dele opp bilde og utføre DCT på hver blokk er å samle informasjonen til de 64 pikslene i en liten del av de 64 DCT-koeffsientene. Vi vil oppleve at flere av de 64 DCT-koeffisientene vil være tilnærmet 0, noe som gjør at vi kan komprimere bilde med koding, ofte huffmann.</p>
+<p>Etter 2D DCT-transformasjonen vil de høyeste verdiene finnes i øverste venstre hjørne av DCT-koeffsienetene. Verdien av koeffisientene sier noe om hvor mye hver koeffisient er tilstede i originalbilde. Vi sier pikselverdiene er transformert.</p>
+<p>Neste steg er å dividere DCT-koeffisientene med vekt-matrise, dette gir opphav til en &quot;lossy&quot; kompresjon fordi vi runder til nærmeste heltll. I JPEG kompresjon er det ofte brukt en standard vekt-matrise (som også brukes i denne oppgaven). Ved å dividere på med vektmatrisen og runde til nærmeste heltall vil vi få en resultatmatrise med høye verdier i øverste venstre høyrne og resten er oftes 0. Vi sier pikselverdiene er kvantifisert.</p>
+<p>Steget etter dette er å utføre en sikk-sakk-skanning, der de største verdiene kommer først i rekka og blir etterfulgt av flere 0'ere. En slik rekke egner seg ypperlig til å utføre løpelengdetransformasjon av de transformerte og kvantifiserte verdiene. Etterpå blir disse løpelengende kodet ved hjelp av huffman-koding. Huffman-koden og kodeboken sendes deretter til mottaker, i en komprimert tilstand. Dette ble ikke gjort i denne obligen.</p>
+<p>Ved å bruke kodeboken kan mottaker dekode kodeordene og reversere løpelengdetransformene. Dette vil gi mottaker samme tallrekke som ble laget i sikk-sakk-skanningen. Deretter kan mottaker mulitiplisere med samme vektmatrise (kvantifiseringen) og ender opp med samme resultat.</p>
+<h2 id="resultatbilder">Resultatbilder</h2>
+<p>Resultatbilder og estimert kompresjonsdata med kompresjonsfaktor, q = [0.1, 0.5, 2, 8, 32].</p>
+<h3 id="rekonstruert-uten-kvantifisering">Rekonstruert uten kvantifisering</h3>
+<img src="./results/uio_no_quantification.png" width="400">
+<h3 id="rekonstruert-med-kvantifiseringsfaktor-q--01">Rekonstruert med kvantifiseringsfaktor q = 0.1</h3>
+<img src="./results/uio_reconstruction_q_0.1.png" width="400">
+<p>Estimert kompresjonsinformasjon:</p>
+<pre class="hljs"><code><div>&quot;uio.png&quot; with q=0.1 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.1: 
+Pixel intensities range from -711.0 to 663.0, which gives a range G = 1375.0 
+H = 3.879b storage = 60.0kB 
+CR = 2.062 
+PR = 51.507% 
+</div></code></pre>
+<h3 id="rekonstruert-med-kvantifiseringsfaktor-q--05">Rekonstruert med kvantifiseringsfaktor q = 0.5</h3>
+<img src="./results/uio_reconstruction_q_0.5.png" width="400">
+<p>Estimert kompresjonsinformasjon:</p>
+<pre class="hljs"><code><div>&quot;uio.png&quot; with q=0.5 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.5: 
+Pixel intensities range from -142.0 to 133.0, which gives a range G = 276.0 
+H = 2.107b storage = 32.0kB 
+CR = 3.797 
+PR = 73.666%
+</div></code></pre>
+<h3 id="rekonstruert-med-kvantifiseringsfaktor-q--2">Rekonstruert med kvantifiseringsfaktor q = 2</h3>
+<img src="./results/uio_reconstruction_q_2.png" width="400">
+<p>Estimert kompresjonsinformasjon:</p>
+<pre class="hljs"><code><div>&quot;uio.png&quot; with q=2 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=2: 
+Pixel intensities range from -36.0 to 33.0, which gives a range G = 70.0 
+H = 1.088b storage = 17.0kB 
+CR = 7.351 
+PR = 86.396% 
+</div></code></pre>
+<h3 id="rekonstruert-med-kvantifiseringsfaktor-q--8">Rekonstruert med kvantifiseringsfaktor q = 8</h3>
+<img src="./results/uio_reconstruction_q_8.png" width="400">
+<p>Estimert kompresjonsinformasjon:</p>
+<pre class="hljs"><code><div>uio.png&quot; with q=8 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=8: 
+Pixel intensities range from -9.0 to 8.0, which gives a range G = 18.0 
+H = 0.49b storage = 8.0kB 
+CR = 16.335 
+PR = 93.878% 
+</div></code></pre>
+<h3 id="rekonstruert-med-kvantifiseringsfaktor-q--32">Rekonstruert med kvantifiseringsfaktor q = 32</h3>
+<img src="./results/uio_reconstruction_q_32.png" width="400">
+<p>Estimert kompresjonsinformasjon:</p>
+<pre class="hljs"><code><div>uio.png&quot; with q=32 Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=32: 
+Pixel intensities range from -2.0 to 2.0, which gives a range G = 5.0 
+H = 0.18b storage = 3.0kB 
+CR = 44.528 
+PR = 97.754%
+</div></code></pre>
+<h2 id="a-rekonstruksjonsfeil">a) Rekonstruksjonsfeil</h2>
+<p>&quot;Blokk-artefakter&quot; er et kjent fenomen når man bruker JPEG-komprimering. Denne feilen oppstår på grunn av den 8x8 blokk-oppdelingen av bildet. En annen kjent feil den såkalte Gibbs-effekten. Gibbs-effekten kan gi sløring og dobbelkonturer i skarpe kanter (endring i pikselintensitet). Disse feilene er borte i nyere standarder av JPEG kompresjon, der DCT er erstattet med &quot;wavelets&quot;.</p>
+<p>Vi kan se tilfeller av disse feilene i resultatbildene. Allerede med en kompresjonsfaktor lik 2 ser man tendenser til &quot;blokk-artefakter&quot; i skyene og glatting. Disse feilene blir mer enda mer synlig ved kompresjonsfaktor 8 og 32, som er naturlig. Jeg observerte ikke noe form for ringing. En grunn til dette er at originalbilde i seg selv er av ganske lav oppløsning.</p>
+<h2 id="b-fremvisning-av-bilde">b) Fremvisning av bilde</h2>
+<p>Hvilken kompresjonsfaktor som er ok for å vise bilde baserer seg veldig mye på hva bilde skal brukes til. Jeg vil si at det rekonstruerte bilde med kompresjonsfaktor lik 8 er god nok til å vise på en dataskjerm der detaljnivået ikke er viktig. Du ser tydelig hva bildet inneholder. Derimot skulle det ble vist frem der behovet for mer detaljer er tilstedet, ville jeg ikke hatt en høyere kompresjonsfaktor enn 2.</p>
+<h2 id="c-kompresjonsfaktor-q-og-kompresjonsraten">c) Kompresjonsfaktor q og kompresjonsraten</h2>
+<p>Kompresjonsraten CR er definert som forholdet mellom b; det faste antallet bits per symbol i det ukomprimerte bildet/datamengden og c; som er det gjennomsnittlige antallet bits per symbol i det komprimerte bilde/datamengden. Når c minker, dvs at vi kan representere en piksel med mindre antall bits, vil kompresjonsraten øke fordi b er en fastsatt verdi.</p>
+<pre class="hljs"><code><div>CR = b / c
+</div></code></pre>
+<p>For å finne det gjennomsnittlige antall bits per symbol en datamengde har, må man:</p>
+<ol>
+<li>Lage en kodebok,
+<ol>
+<li>Finner antall forekomster, <code>n_i</code>, av symbolet <code>s_i</code> i en sekvens av <code>N</code> symboler.</li>
+<li>Hvert symbol får sitt eget kodeord <code>c_i</code> der <code>b_i</code> er lengden av kodeordet i antall biter.</li>
+</ol>
+</li>
+<li>Alle symbolene av typen <code>s_i</code> vil dermed bidra med <code>n_i * b_i</code> biter i den totale kodesekvensen.</li>
+</ol>
+<p>Når vi har et mål på antall biter brukt per symbol kan vi også finne det gjennomsnittlige antall biter per symbol i datamengden. Det gjøres ved å finne summen av alle bidragene og deretter dividere på hele sekvensen.</p>
+<pre class="hljs"><code><div>G = range of pixelintensities
+c = 0
+for i=0 to G-1:
+    c += b_i*n_i
+c = c/N
+</div></code></pre>
+<p>La oss se på eksempelet med et gråtonebilde. Et gråtonebilde bruker 8bits per piksel, som gir b = 8. Etter en JPEG kompresjon har vi fjernet &quot;unødig&quot; informasjon fra bildet, gjennom kvantifiseringen. Kvantifiseringen beholder verdier som bidrar til bildets struktur, mens den fjerner mindre viktige detajler, som gjør at vi trenger mindre antall bits per piksel. Det fører til at c vil minke.</p>
+<p>Kvantifiseringen skjer ved å dividere DCT-koeffisientene med en kjent vektmatrise. Dersom vi øker q, øker også verdiene i vektmatrisen.</p>
+<p>I vårt tilfellet antar vi at entropien til det komprimerte bilde tilsvarer antall bits per symbol vi får etter kompresjonen. Entropi er et matematisk mål på gjennomsnittlig informasjonsmengde i en sekvens av tall eller tegn. Det er ønskelig at det gjennomsnittlige antall biter vi bruker per symbol skal være lik entropien til meldingen.</p>
+
+</body>
+</html>
