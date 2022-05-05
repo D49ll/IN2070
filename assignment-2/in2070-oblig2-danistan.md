@@ -7,6 +7,13 @@
   - [Oppgave 1.2](#oppgave-12)
 - [Oppgave 2 - Ikke-tapsfri JPEG-kompresjon](#oppgave-2---ikke-tapsfri-jpeg-kompresjon)
   - [Resultatbilder](#resultatbilder)
+    - [Originalbilde](#originalbilde)
+    - [Rekonstruert uten kvantifisering\](#rekonstruert-uten-kvantifisering)
+    - [Rekonstruert med kvantifiseringsfaktor q = 0.1\](#rekonstruert-med-kvantifiseringsfaktor-q--01)
+    - [Rekonstruert med kvantifiseringsfaktor q = 0.5\](#rekonstruert-med-kvantifiseringsfaktor-q--05)
+    - [Rekonstruert med kvantifiseringsfaktor q = 2\](#rekonstruert-med-kvantifiseringsfaktor-q--2)
+    - [Rekonstruert med kvantifiseringsfaktor q = 8\](#rekonstruert-med-kvantifiseringsfaktor-q--8)
+    - [Rekonstruert med kvantifiseringsfaktor q = 32\](#rekonstruert-med-kvantifiseringsfaktor-q--32)
   - [Generelt om JPEG-kompresjon](#generelt-om-jpeg-kompresjon)
   - [a) Rekonstruksjonsfeil](#a-rekonstruksjonsfeil)
   - [b) Fremvisning av bilde](#b-fremvisning-av-bilde)
@@ -39,68 +46,73 @@ Resultatbilde fra frekvensdomenet med 15x15 middelverdifilter\
 # Oppgave 2 - Ikke-tapsfri JPEG-kompresjon
 
 ## Resultatbilder
-Originalbilde\
+### Originalbilde
 <img src="./uio.png" width="700">
 
-Rekonstruert uten kvantifisering\
+### Rekonstruert uten kvantifisering\
 <img src="./results/uio_no_quantification.png" width="700">
 
-Rekonstruert med kvantifiseringsfaktor q = 0.1\
+### Rekonstruert med kvantifiseringsfaktor q = 0.1\
 <img src="./results/uio_reconstruction_q_0.1.png" width="700">
 
 Estimert kompresjonsinformasjon:
 ```
 "uio.png" with q=0.1 
-Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.1: 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.1: 
 Pixel intensities range from -711.0 to 663.0, which gives a range G = 1375.0 
 H = 3.879b storage = 60.0kB 
 CR = 2.062 
 PR = 51.507% 
 ```
-Rekonstruert med kvantifiseringsfaktor q = 0.5\
+### Rekonstruert med kvantifiseringsfaktor q = 0.5\
 <img src="./results/uio_reconstruction_q_0.5.png" width="700">
 
 Estimert kompresjonsinformasjon:
 ``` 
 "uio.png" with q=0.5 
-Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.5: 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=0.5: 
 Pixel intensities range from -142.0 to 133.0, which gives a range G = 276.0 
 H = 2.107b storage = 32.0kB 
 CR = 3.797 
 PR = 73.666%
 ```
 
-Rekonstruert med kvantifiseringsfaktor q = 2\
+### Rekonstruert med kvantifiseringsfaktor q = 2\
 <img src="./results/uio_reconstruction_q_2.png" width="700">
 
 Estimert kompresjonsinformasjon:
 ```
 "uio.png" with q=2 
-Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=2: 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=2: 
 Pixel intensities range from -36.0 to 33.0, which gives a range G = 70.0 
 H = 1.088b storage = 17.0kB 
 CR = 7.351 
 PR = 86.396% 
 ```
-Rekonstruert med kvantifiseringsfaktor q = 8\
+### Rekonstruert med kvantifiseringsfaktor q = 8\
 <img src="./results/uio_reconstruction_q_8.png" width="700">
 
 Estimert kompresjonsinformasjon:
 ```
 uio.png" with q=8 
-Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=8: 
+Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=8: 
 Pixel intensities range from -9.0 to 8.0, which gives a range G = 18.0 
 H = 0.49b storage = 8.0kB 
 CR = 16.335 
 PR = 93.878% 
 ```
 
-Rekonstruert med kvantifiseringsfaktor q = 32\
+### Rekonstruert med kvantifiseringsfaktor q = 32\
 <img src="./results/uio_reconstruction_q_32.png" width="700">
 
 Estimert kompresjonsinformasjon:
 ```
-uio.png" with q=32 Find entropy of compressed image (H), entropy of original image (b), storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=32: 
+uio.png" with q=32 Find entropy of compressed image (H), entropy of original image (b), 
+storage, compressionrate (CR) and percetage removed (PR) after JPEG-compression with q=32: 
 Pixel intensities range from -2.0 to 2.0, which gives a range G = 5.0 
 H = 0.18b storage = 3.0kB 
 CR = 44.528 
