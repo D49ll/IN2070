@@ -32,22 +32,13 @@ Bildene og tidskurvene lagres i mappen der `oppgave1.py` kjøres.
 
 ## Oppgave 1.1 og 1.2
 
-- Symmetri
-- DC frekvensen, altså 0,0 , er lik summen av alle pikselverdiene i bilde
-- Fasen gjør at shift teoremet Når noe flyttes er spekteret litkt, men fasen ulik. 
-- Sentrer laveste frekvens i midten, fouriertransform er periodisk, det gjelder kun for når man skal lage en intuisjon i amlitudespekterert
-
-- Sirkelkonvensjon av randen
-- Nullutvider filteret
-
-Antar at bildet f(x,y) er implsitt periodisk
-Originalbildet\
+**Originalbildet**\
 <img src="./cow.png" width="700">
 
-Romlig konvolusjon med 15x15 middelverdifilter\
+**Romlig konvolusjon med 15x15 middelverdifilter**\
 <img src="./results/oppg1_1%20(15x15)%20cow.png" width="700">
 
-Frekvensdomenet med 15x15 middelverdifilter\
+**Frekvensdomenet med 15x15 middelverdifilter**\
 <img src="./results/oppg1_1%20(fft2)%20cow.png" width="700">
 
 ## Oppgave 1.2
@@ -58,10 +49,10 @@ En sirkelkonvolusjon i bildedomene er ekvivalent med elementvis multiplikasjon i
 
 Fast-fourier-tranformen, som utnytter 2D DFT er separabelt, har en kjøretid O(N log N), mens romlig konvolusjonsfiltrering O(n²). Det betyr at for store filter vil en filtrering i frekvensdomene være raskere, fordi (n² >> log N).
 
-Kjøretidskurver
+**Kjøretidskurver**
 <img src="./results/Prosesseringstid.png" width="700">
 
-Kommentar til kjøretid:\
+**Kommentar til kjøretid:**\
 Fra grafen ser man den romlige konvolusjonen øker med jo større filteret blir, med formen til n². Dersom filteret er lite, dvs mindre enn 4x4, så vil romlig konvolusjon være raskere. For de andre filterverdiene er fast-fourier-transformen raskest. 
 
 Tidskurven til fast-fourier-transformen var ikke som forventet. Jeg hadde trodd at den skulle øke mer før den stabiliserte seg. Mulig jeg gjort feil når jeg tok tiden, men gjorde likt på begge testene. Derfor kan resultatet mitt avvike fra virkeligheten, og det kan tenkes at romlig konvolusjon er raskere for litt større filter. Men det er helt sikkert at fast-fourier-transform er raskest for store filter, grunnet log n.
@@ -81,6 +72,8 @@ for i, n in zip(range(values.shape[0]), values):
     FH = fast_fourier(f,h)
     freq_time[i] = time.time()-start
 ```
+Eksempel på kjøretider:\
+<img src="./O_examples.jpeg" width="700">
 
 
 # Oppgave 2 - Ikke-tapsfri JPEG-kompresjon
