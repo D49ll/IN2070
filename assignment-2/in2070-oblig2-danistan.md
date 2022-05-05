@@ -25,10 +25,10 @@ Originalbildet\
 <img src="./cow.png" width="700">
 
 Resultatbilde fra romlig konvolusjon med 15x15 middelverdifilter\
-<img src="./oppg1_1%20(15x15)%20cow.png" width="700">
+<img src="./results/oppg1_1%20(15x15)%20cow.png" width="700">
 
 Resultatbilde fra frekvensdomenet med 15x15 middelverdifilter\
-<img src="./oppg1_1%20(fft2)%20cow.png" width="700">
+<img src="./results/oppg1_1%20(fft2)%20cow.png" width="700">
 
 ## Oppgave 1.2
 
@@ -39,20 +39,20 @@ Originalbilde\
 <img src="./uio.png" width="700">
 
 Rekonstruert uten kvantifisering\
-<img src="./uio_no_quantification.png" width="700">
+<img src="./results/uio_no_quantification.png" width="700">
 
 Rekonstruert med kvantifiseringsfaktor q = 0.1\
-<img src="./uio_reconstruction_q_0.1.png" width="700">
+<img src="./results/uio_reconstruction_q_0.1.png" width="700">
 
 Rekonstruert med kvantifiseringsfaktor q = 0.5\
-<img src="./uio_reconstruction_q_0.5.png" width="700">
+<img src="./results/uio_reconstruction_q_0.5.png" width="700">
 
 Rekonstruert med kvantifiseringsfaktor q = 2\
-<img src="./uio_reconstruction_q_2.png" width="700">
+<img src="./results/uio_reconstruction_q_2.png" width="700">
 
 Rekonstruert med kvantifiseringsfaktor q = 8\
-<img src="./uio_reconstruction_q_8.png" width="700">
+<img src="./results/uio_reconstruction_q_8.png" width="700">
 
 Rekonstruert med kvantifiseringsfaktor q = 32\
-<img src="./uio_reconstruction_q_32.png" width="700">
+<img src="./results/uio_reconstruction_q_32.png" width="700">
 
