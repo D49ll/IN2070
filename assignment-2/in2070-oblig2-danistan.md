@@ -2,7 +2,7 @@
 
 - [Obligatorisk oppgave 2](#obligatorisk-oppgave-2)
 - [Oppgave 1 - Implementasjon av konvolusjonsfilter i frekvensdomenet](#oppgave-1---implementasjon-av-konvolusjonsfilter-i-frekvensdomenet)
-  - [Generelt angående oppgave 1](#generelt-angående-oppgave-1)
+  - [Generelt](#generelt)
   - [Oppgave 1.1 og 1.2](#oppgave-11-og-12)
   - [Oppgave 1.2](#oppgave-12)
 - [Oppgave 2 - Ikke-tapsfri JPEG-kompresjon](#oppgave-2---ikke-tapsfri-jpeg-kompresjon)
@@ -10,14 +10,14 @@
 
 # Oppgave 1 - Implementasjon av konvolusjonsfilter i frekvensdomenet
 
-## Generelt angående oppgave 1
+## Generelt
 Koden ligger vedlagt delivry. For å kjøre programmet brukes følgende
 
 ```
 $ python3 oppgave1.py
 ```
 
-Bildene og tidskurvene lagres i mappen der oppgave1.py kjøres.
+Bildene og tidskurvene lagres i mappen der `oppgave1.py` kjøres.
 
 ## Oppgave 1.1 og 1.2
 
