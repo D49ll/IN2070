@@ -43,9 +43,9 @@ def plot_curves(y1, y2, x):
     plt.xlabel("Filterstørrelse (middelverdi)")
     plt.ylabel("tid brukt (s)")
     plt.title("Prosesseringstid: 2D konvolusjon vs fast-fourier-transform")
+    plt.legend()
     plt.savefig("Prosesseringstid.png")
 
-    plt.legend()
     plt.show()
 
 def oppgave1_1(filename):
@@ -69,14 +69,6 @@ def oppgave1_1(filename):
     #Lagrer bildene som gråskala
     imwrite(f'oppg1_1 ({n}x{n}) '+filename, fh.astype(np.uint8))
     imwrite(f'oppg1_1 (fft2) '+filename, FH.astype(np.uint8))
-    
-    # #Plotter resultatet
-    # plt.imshow(FH, cmap='gray',vmin=0,vmax=255)
-    # plt.title(f'fft2 {filename}')
-    # plt.figure()
-    # plt.imshow(fh,cmap='gray',vmin=0,vmax=255)
-    # plt.title(f"({n}x{n}) {filename}")
-    # plt.show()
 
 def oppgave1_3(filename, n_tests):
     f = imread(filename, as_gray = True)
@@ -101,7 +93,6 @@ def oppgave1_3(filename, n_tests):
 
 def main():
     oppgave1_1('cow.png')
-    # oppgave1_2()
-    # oppgave1_3('cow.png', 31)
+    oppgave1_3('cow.png', 31)
 
 main()

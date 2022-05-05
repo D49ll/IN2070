@@ -5,6 +5,7 @@
   - [Generelt](#generelt)
   - [Oppgave 1.1 og 1.2](#oppgave-11-og-12)
   - [Oppgave 1.2](#oppgave-12)
+  - [Oppgave 1.3](#oppgave-13)
 - [Oppgave 2 - Ikke-tapsfri JPEG-kompresjon](#oppgave-2---ikke-tapsfri-jpeg-kompresjon)
   - [Generelt om JPEG-kompresjon](#generelt-om-jpeg-kompresjon)
   - [Resultatbilder](#resultatbilder)
@@ -16,7 +17,7 @@
     - [Rekonstruert med kvantifiseringsfaktor q = 32](#rekonstruert-med-kvantifiseringsfaktor-q--32)
   - [a) Rekonstruksjonsfeil](#a-rekonstruksjonsfeil)
   - [b) Fremvisning av bilde](#b-fremvisning-av-bilde)
-  - [Kompresjonsfaktor q og kompresjonsraten](#kompresjonsfaktor-q-og-kompresjonsraten)
+  - [c) Kompresjonsfaktor q og kompresjonsraten](#c-kompresjonsfaktor-q-og-kompresjonsraten)
 
 # Oppgave 1 - Implementasjon av konvolusjonsfilter i frekvensdomenet
 
@@ -31,16 +32,56 @@ Bildene og tidskurvene lagres i mappen der `oppgave1.py` kjøres.
 
 ## Oppgave 1.1 og 1.2
 
+- Symmetri
+- DC frekvensen, altså 0,0 , er lik summen av alle pikselverdiene i bilde
+- Fasen gjør at shift teoremet Når noe flyttes er spekteret litkt, men fasen ulik. 
+- Sentrer laveste frekvens i midten, fouriertransform er periodisk, det gjelder kun for når man skal lage en intuisjon i amlitudespekterert
+
+- Sirkelkonvensjon av randen
+- Nullutvider filteret
+
+Antar at bildet f(x,y) er implsitt periodisk
 Originalbildet\
 <img src="./cow.png" width="700">
 
-Resultatbilde fra romlig konvolusjon med 15x15 middelverdifilter\
+Romlig konvolusjon med 15x15 middelverdifilter\
 <img src="./results/oppg1_1%20(15x15)%20cow.png" width="700">
 
-Resultatbilde fra frekvensdomenet med 15x15 middelverdifilter\
+Frekvensdomenet med 15x15 middelverdifilter\
 <img src="./results/oppg1_1%20(fft2)%20cow.png" width="700">
 
 ## Oppgave 1.2
+
+En sirkelkonvolusjon i bildedomene er ekvivalent med elementvis multiplikasjon i frekvensdomene. Det er dette som gjør at vi kan designe filter i bildedomene for deretter og transformere det til frekvensdomene, og visa-versa. Det er viktig at innbilde og filteret er av samme dimensjon. Derfor blir ofte filteret null-utvidet. Men grunnet at det er en sirkelkonvolusjon må bildet også nullutvides for å håndtere randen. Når man bruker DFT antar man implisitt en periodisitet i innbildet, som kan gi en konsekvens av hvordan resultatbildet blir. En slik konsekvens kan være en translasjon av bilde, slik som var tilfellet i denne oppgaven. Man ser også at randen av bildene er ulike. I den romlige konvolusjonen er bildet nullutvidet, og derfor får man en "svart" kant som rammer bildet. Dersom man hadde nullutvidet bilde ville man kunne fjerne den translatoriske konsekvensen av den implisitte periodisiteten.
+
+## Oppgave 1.3 
+
+Fast-fourier-tranformen, som utnytter 2D DFT er separabelt, har en kjøretid O(N log N), mens romlig konvolusjonsfiltrering O(n²). Det betyr at for store filter vil en filtrering i frekvensdomene være raskere, fordi (n² >> log N).
+
+Kjøretidskurver
+<img src="./results/Prosesseringstid.png" width="700">
+
+Kommentar til kjøretid:\
+Fra grafen ser man den romlige konvolusjonen øker med jo større filteret blir, med formen til n². Dersom filteret er lite, dvs mindre enn 4x4, så vil romlig konvolusjon være raskere. For de andre filterverdiene er fast-fourier-transformen raskest. 
+
+Tidskurven til fast-fourier-transformen var ikke som forventet. Jeg hadde trodd at den skulle øke mer før den stabiliserte seg. Mulig jeg gjort feil når jeg tok tiden, men gjorde likt på begge testene. Derfor kan resultatet mitt avvike fra virkeligheten, og det kan tenkes at romlig konvolusjon er raskere for litt større filter. Men det er helt sikkert at fast-fourier-transform er raskest for store filter, grunnet log n.
+
+Har lagt ved et utsnitt av koden under:
+
+```
+print("Starting timing process")
+for i, n in zip(range(values.shape[0]), values):
+    h = mean_value_kernel(n)
+    
+    start = time.time()
+    fh = signal.convolve2d(f,h,'same')
+    conv_time[i] = time.time()-start
+    
+    start = time.time()
+    FH = fast_fourier(f,h)
+    freq_time[i] = time.time()-start
+```
+
 
 # Oppgave 2 - Ikke-tapsfri JPEG-kompresjon
 
@@ -137,7 +178,7 @@ Vi kan se tilfeller av disse feilene i resultatbildene. Allerede med en kompresj
 ## b) Fremvisning av bilde
 Hvilken kompresjonsfaktor som er ok for å vise bilde baserer seg veldig mye på hva bilde skal brukes til. Jeg vil si at det rekonstruerte bilde med kompresjonsfaktor lik 8 er god nok til å vise på en dataskjerm der detaljnivået ikke er viktig. Du ser tydelig hva bildet inneholder. Derimot skulle det ble vist frem der behovet for mer detaljer er tilstedet, ville jeg ikke hatt en høyere kompresjonsfaktor enn 2. 
 
-## Kompresjonsfaktor q og kompresjonsraten
+## c) Kompresjonsfaktor q og kompresjonsraten
 
 Kompresjonsraten CR er definert som forholdet mellom b; det faste antallet bits per symbol i det ukomprimerte bildet/datamengden og c; som er det gjennomsnittlige antallet bits per symbol i det komprimerte bilde/datamengden. Når c minker, dvs at vi kan representere en piksel med mindre antall bits, vil kompresjonsraten øke fordi b er en fastsatt verdi.
 
