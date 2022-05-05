@@ -49,8 +49,9 @@ En sirkelkonvolusjon i bildedomene er ekvivalent med elementvis multiplikasjon i
 
 Fast-fourier-tranformen, som utnytter 2D DFT er separabelt, har en kjøretid O(N log N), mens romlig konvolusjonsfiltrering O(n²). Det betyr at for store filter vil en filtrering i frekvensdomene være raskere, fordi (n² >> log N).
 
-**Kjøretidskurver**
+**Kjøretidskurver**\
 <img src="./results/Prosesseringstid.png" width="700">
+
 
 **Kommentar til kjøretid:**\
 Fra grafen ser man den romlige konvolusjonen øker med jo større filteret blir, med formen til n². Dersom filteret er lite, dvs mindre enn 4x4, så vil romlig konvolusjon være raskere. For de andre filterverdiene er fast-fourier-transformen raskest. 
@@ -72,7 +73,7 @@ for i, n in zip(range(values.shape[0]), values):
     FH = fast_fourier(f,h)
     freq_time[i] = time.time()-start
 ```
-Eksempel på kjøretider:\
+**Eksempel på kjøretider:**\
 <img src="./O_examples.jpeg" width="700">
 
 
