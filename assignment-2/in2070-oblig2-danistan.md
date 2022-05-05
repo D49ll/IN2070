@@ -6,7 +6,7 @@
   - [Oppgave 1.1 og 1.2](#oppgave-11-og-12)
   - [Oppgave 1.2](#oppgave-12)
 - [Oppgave 2 - Ikke-tapsfri JPEG-kompresjon](#oppgave-2---ikke-tapsfri-jpeg-kompresjon)
-  - [Rekonstruerte bilder](#rekonstruerte-bilder)
+  - [Resultatbilder](#resultatbilder)
 
 # Oppgave 1 - Implementasjon av konvolusjonsfilter i frekvensdomenet
 
@@ -34,7 +34,10 @@ Resultatbilde fra frekvensdomenet med 15x15 middelverdifilter\
 
 # Oppgave 2 - Ikke-tapsfri JPEG-kompresjon
 
-## Rekonstruerte bilder
+## Resultatbilder
+Originalbilde\
+<img src="./uio.png" width="700">
+
 Rekonstruert uten kvantifisering\
 <img src="./uio_no_quantification.png" width="700">
 
